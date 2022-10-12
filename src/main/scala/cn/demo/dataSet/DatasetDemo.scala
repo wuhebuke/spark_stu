@@ -55,7 +55,7 @@ object DatasetDemo {
 //    val df2: DataFrame = points.join(schools, $"label" === $"label")  //报错 两个参数相似(ambiguous)无法识别
 //    val df3: DataFrame = points.join(schools, points("label") === schools("label"))  //会出现相同表头,label
     val df4: DataFrame = points.join(schools, Seq("label"))  //只有一个label表头
-    df4.show()
+    //df4.show()
 //    val df5: DataFrame = points.withColumnRenamed("tag", "tag1").join(schools, Seq("label"))
 //    df5.printSchema()
 //    df5.show()
@@ -66,9 +66,6 @@ object DatasetDemo {
 
 //    val df7: DataFrame = points.join(schools, $"label1" === $"label2" and $"tag1"===$"tag2")
 //    df7.show()
-
-
-
 
 
   }
