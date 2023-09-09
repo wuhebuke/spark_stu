@@ -15,7 +15,7 @@ object DataAnalysis {
     import org.apache.spark.sql.expressions.Window
     import org.apache.spark.sql.types._
 
-   /* val userSRDD: RDD[String] = sc.textFile("hdfs://192.168.42.122:9000/eventsource/users.csv")
+   /* val userSRDD: RDD[String] = sc.textFile("hdfs://single03:9000/eventsource/users.csv")
 //    userSRDD.take(10).foreach(println)
     userSRDD.collect().map(x=>x.split(",")).take(10).foreach(x=>println(x.toList))*/
 

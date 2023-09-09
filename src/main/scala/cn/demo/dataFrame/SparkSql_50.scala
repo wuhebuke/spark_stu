@@ -12,9 +12,9 @@ object SparkSql_50 {
     val sparkApp: SparkSession = SparkSession.builder().master("local[*]").appName("sparkMysql").getOrCreate()
 
     val driver="com.mysql.jdbc.Driver"
-    val url="jdbc:mysql://192.168.42.122:3306/school"
+    val url="jdbc:mysql://192.168.42.122:3306/school?useUnicode=true&characterEncoding=utf-8&useSSL=false"
     val user="root"
-    val password="kb18"
+    val password="fly18"
 
 
     val prop=new Properties()
@@ -32,23 +32,22 @@ object SparkSql_50 {
     import sparkApp.implicits._
 
 
-    /*
    //1.查询"01"课程比"02"课程成绩高的学生的信息及课程分数
-    println("\"01\"课程比\"02\"课程成绩高的学生的信息及课程分数")
-    score.withColumnRenamed("s_id","sco_id").join(student,$"sco_id"===$"s_id" and($"c_id")===1).alias("ods1").
+    println("\"01\"课程比\"02\"课程成绩高的学生的信息及课程分数:")
+    score.withColumnRenamed("s_id","stu_id").join(student,$"stu_id"===$"s_id" and($"c_id")===1).alias("ods1").
       join(
-      score.withColumnRenamed("s_id","sco_id").join(student,$"sco_id"===$"s_id" and($"c_id")===2).alias("ods2"),
-      col("ods1.sco_id")===col("ods2.sco_id")
+      score.withColumnRenamed("s_id","stu_id").join(student,$"stu_id"===$"s_id" and($"c_id")===2).alias("ods2"),
+      col("ods1.stu_id")===col("ods2.stu_id")
     ).where($"ods1.s_score">$"ods2.s_score").select(
       $"ods1.s_id",$"ods1.s_name",$"ods1.s_birth",$"ods1.s_sex",$"ods1.s_score".as("score_01"),$"ods2.s_score".as("score_02"))
-     .show()*/
+     .show()
 
     //2、查询"01"课程比"02"课程成绩低的学生的信息及课程分数
     /*println("\"01\"课程比\"02\"课程成绩低的学生的信息及课程分数")
-    score.withColumnRenamed("s_id","sco_id").join(student,$"sco_id"===$"s_id" and($"c_id")===1).alias("ods1").
+    score.withColumnRenamed("s_id","stu_id").join(student,$"stu_id"===$"s_id" and($"c_id")===1).alias("ods1").
       join(
-        score.withColumnRenamed("s_id","sco_id").join(student,$"sco_id"===$"s_id" and($"c_id")===2).alias("ods2"),
-        col("ods1.sco_id")===col("ods2.sco_id")
+        score.withColumnRenamed("s_id","stu_id").join(student,$"stu_id"===$"s_id" and($"c_id")===2).alias("ods2"),
+        col("ods1.stu_id")===col("ods2.stu_id")
       ).where($"ods1.s_score"<$"ods2.s_score").select(
       $"ods1.s_id",$"ods1.s_name",$"ods1.s_birth",$"ods1.s_sex",$"ods1.s_score".as("score_01"),$"ods2.s_score".as("score_02"))
      .show()*/
@@ -270,18 +269,6 @@ object SparkSql_50 {
 
     //21、查询不同老师所教不同课程平均分从高到低显示
     //println("21.查询不同老师所教不同课程平均分从高到低显示 ")
-
-
-
-
-
-
-
-
-
-
-
-
 
   }
 }

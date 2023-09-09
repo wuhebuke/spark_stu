@@ -28,13 +28,13 @@ object UDTF {
 
     df.createOrReplaceTempView("udtfTable")
 
-    sparkApp.sql("create temporary function Myudtf as 'cn.kgc.function.MyUDTF'")
-    sparkApp.sql("select skill from udtfTable").show(false)
+    sparkApp.sql("create temporary function Myudtf as 'cn.demo.function.MyUDTF'")
+    //sparkApp.sql("select skill from udtfTable").show(false)
     sparkApp.sql("select id,name,Myudtf(skill) from udtfTable").show()
   }
 }
 
-    //hive UDTF函数 一进多出
+    //UDTF函数 一进多出
     class MyUDTF extends GenericUDTF{
 
       override def initialize(argOIs: Array[ObjectInspector]): StructObjectInspector = {

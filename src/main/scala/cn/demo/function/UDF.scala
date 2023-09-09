@@ -18,8 +18,8 @@ object UDF {
     sparkApp.udf.register("hobby_num",(x:String)=>x.split(",").size)
 //    sparkApp.sql("select name,hobbies,hobby_num(hobbies) as hobbyNum from hobby").show()
 
-    sparkApp.udf.register("concat2",(x:String,y:String)=>x+"like"+y)
-    sparkApp.sql("select name,hobbies,hobby_num(hobbies),concat2(name,hobbies) as concat2 from hobby").show(false)
+    sparkApp.udf.register("concat2",(x:String,y:String)=>x+" like "+y)
+    sparkApp.sql("select name,hobbies,hobby_num(hobbies) as hobbiesNum,concat2(name,hobbies) as concat2 from hobby").show(false)
   }
 
 }
